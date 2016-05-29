@@ -8,6 +8,9 @@ use Illuminate\Support\MessageBag;
 
 class ClienteController extends Controller
 {
+
+    protected $guard = 'web';
+
     public function __construct()
     {
         //$this->middleware('auth')->except(['login']);
@@ -15,7 +18,9 @@ class ClienteController extends Controller
 
     public function index()
     {
-        return view('cliente.index');
+        $user = auth()->guard( $this->guard )->user();
+        $guard = $this->guard;
+        return view('cliente.index', compact('user','guard') );
     }
 
     public function login()

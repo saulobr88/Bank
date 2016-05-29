@@ -1,55 +1,46 @@
-@extends('layouts.app')
+@extends('layouts.login')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login Cliente</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/cliente/login') }}">
-                        {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('identificacao') ? ' has-error' : '' }}">
-                            <label for="identificacao" class="col-md-4 control-label">Identificação</label>
+    <div class="container">
+        <div class="row">
+            {!! Form::open( ['url'=>'/cliente/login', 'class'=>'login-form'])!!}
+            {{ csrf_field() }}
+            <div class="login-wrap">
+                <h2>Cliente</h2>
+                <p class="login-img"><i class="icon_lock_alt"></i></p>
 
-                            <div class="col-md-6">
-                                <input id="identificacao" type="text" class="form-control" name="identificacao" value="{{ old('identificacao') }}" placeholder="Email ou CPF">
-
-                                @if ($errors->has('identificacao'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('identificacao') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" placeholder="Senha">
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-sign-in"></i> Login
-                                </button>
-
-                            </div>
-                        </div>
-                    </form>
+                <div class="form-group{{ $errors->has('identificacao') ? ' has-error' : '' }}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="icon_document"></i></span>
+                        {!! Form::text(
+                        'identificacao', old('identificacao'),
+                        ['class'=>'form-control','placeholder'=>'Email ou CPF','maxlength'=>'255']
+                        ) !!}
+                    </div>
+                    @if ($errors->has('identificacao'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('identificacao') }}</strong>
+                    </span>
+                    @endif
                 </div>
+
+                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+                        {!! Form::password('password', ['class'=>'form-control','placeholder'=>'Senha']) !!}
+                    </div>
+                    @if ($errors->has('password'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                    @endif
+                </div>
+
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
             </div>
+            {!! Form::close() !!}
         </div>
     </div>
-</div>
+
 @endsection

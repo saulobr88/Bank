@@ -9,6 +9,9 @@ use Illuminate\Support\MessageBag;
 
 class FuncionarioController extends Controller
 {
+
+    protected $guard = 'funcionarios';
+
     public function __construct()
     {
         //$this->middleware('funcionarios:funcionarios')->except(['login']);
@@ -16,7 +19,9 @@ class FuncionarioController extends Controller
 
     public function index()
     {
-        return view('funcionario.index');
+        $user = auth()->guard( $this->guard )->user();
+        $guard = $this->guard;
+        return view('funcionario.index', compact('user','guard') );
     }
 
     public function login()

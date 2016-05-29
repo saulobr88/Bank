@@ -1,82 +1,168 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BCC Bank - UFRPE 2016.1">
+    <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
 
-    <title>Laravel</title>
+    <title>BCC - Internet Banking</title>
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
-
-    <style>
-        body {
-            font-family: 'Lato';
-        }
-
-        .fa-btn {
-            margin-right: 6px;
-        }
-    </style>
+    <!-- Bootstrap CSS -->
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- bootstrap theme -->
+    <link href="{{ asset('css/bootstrap-theme.css') }}" rel="stylesheet">
+    <!--external css-->
+    <!-- font icon -->
+    <link href="{{ asset('css/elegant-icons-style.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" />
+    <!-- full calendar css-->
+    <link href="{{ asset('assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/fullcalendar/fullcalendar/fullcalendar.css') }}" rel="stylesheet" />
+    <!-- easy pie chart-->
+    <link href="{{ asset('assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css') }}" rel="stylesheet" type="text/css" media="screen"/>
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}" type="text/css">
+    <link href="{{ asset('css/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="{{ asset('css/fullcalendar.css') }}">
+    <link href="{{ asset('css/widgets.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style-responsive.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/xcharts.min.css') }}" rel=" stylesheet">
+    <link href="{{ asset('css/jquery-ui-1.10.4.min.css') }}" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
+    <!--[if lt IE 9]>
+    <script src="{{ asset('js/html5shiv.js') }}"></script>
+    <script src="{{ asset('js/respond.min.js') }}"></script>
+    <script src="{{ asset('js/lte-ie7.js') }}"></script>
+    <![endif]-->
 </head>
-<body id="app-layout">
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
 
-                <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+<body>
 
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
-                </a>
-            </div>
+<!-- container section start -->
+<section id="container" class="">
 
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
-                    @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                            </ul>
-                        </li>
-                    @endif
-                </ul>
-            </div>
+    <header class="header dark-bg">
+        <div class="toggle-nav">
+            <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
         </div>
-    </nav>
 
-    @yield('content')
+        <!--logo start-->
+        <a href="#" class="logo">BCC <span class="lite">Bank</span></a>
+        <!--logo end-->
 
-    <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+        @include('layouts.topnav')
+
+    </header>
+    <!--header end-->
+
+    <!--sidebar start-->
+    @if( $guard == 'funcionarios' )
+        @include('funcionario.sidebar')
+    @else
+        @include('cliente.sidebar')
+    @endif
+    <!--sidebar end-->
+
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            @yield('content')
+        </section>
+    </section>
+    <!--main content end-->
+</section>
+<!-- container section start -->
+
+<!-- javascripts -->
+<script src="{{ asset('js/jquery.js') }}"></script>
+<script src="{{ asset('js/jquery-ui-1.10.4.min.js') }}"></script>
+<script src="{{ asset('js/jquery-1.8.3.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-ui-1.9.2.custom.min.js') }}"></script>
+<!-- bootstrap -->
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<!-- nice scroll -->
+<script src="{{ asset('js/jquery.scrollTo.min.js') }}"></script>
+<script src="{{ asset('js/jquery.nicescroll.js') }}" type="text/javascript"></script>
+<!-- charts scripts -->
+<script src="{{ asset('assets/jquery-knob/js/jquery.knob.js') }}"></script>
+<script src="{{ asset('js/jquery.sparkline.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js') }}"></script>
+<script src="{{ asset('js/owl.carousel.js') }}" ></script>
+<!-- jQuery full calendar -->
+<<script src="{{ asset('js/fullcalendar.min.js') }}"></script> <!-- Full Google Calendar - Calendar -->
+<script src="{{ asset('assets/fullcalendar/fullcalendar/fullcalendar.js') }}"></script>
+<!--script for this page only-->
+<script src="{{ asset('js/calendar-custom.js') }}"></script>
+<script src="{{ asset('js/jquery.rateit.min.js') }}"></script>
+<!-- custom select -->
+<script src="{{ asset('js/jquery.customSelect.min.js') }}" ></script>
+<script src="{{ asset('assets/chart-master/Chart.js') }}"></script>
+
+<!--custome script for all page-->
+<script src="{{ asset('js/scripts.js') }}"></script>
+<!-- custom script for this page-->
+<script src="{{ asset('js/sparkline-chart.js') }}"></script>
+<script src="{{ asset('js/easy-pie-chart.js') }}"></script>
+<script src="{{ asset('js/jquery-jvectormap-1.2.2.min.js') }}"></script>
+<script src="{{ asset('js/jquery-jvectormap-world-mill-en.js') }}"></script>
+<script src="{{ asset('js/xcharts.min.js') }}"></script>
+<script src="{{ asset('js/jquery.autosize.min.js') }}"></script>
+<script src="{{ asset('js/jquery.placeholder.min.js') }}"></script>
+<script src="{{ asset('js/gdp-data.js') }}"></script>
+<script src="{{ asset('js/morris.min.js') }}"></script>
+<script src="{{ asset('js/sparklines.js') }}"></script>
+<script src="{{ asset('js/charts.js') }}"></script>
+<script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>
+<script>
+
+    //knob
+    $(function() {
+        $(".knob").knob({
+            'draw' : function () {
+                $(this.i).val(this.cv + '%')
+            }
+        })
+    });
+
+    //carousel
+    $(document).ready(function() {
+        $("#owl-slider").owlCarousel({
+            navigation : true,
+            slideSpeed : 300,
+            paginationSpeed : 400,
+            singleItem : true
+
+        });
+    });
+
+    //custom select box
+
+    $(function(){
+        $('select.styled').customSelect();
+    });
+
+    /* ---------- Map ---------- */
+    $(function(){
+        $('#map').vectorMap({
+            map: 'world_mill_en',
+            series: {
+                regions: [{
+                    values: gdpData,
+                    scale: ['#000', '#000'],
+                    normalizeFunction: 'polynomial'
+                }]
+            },
+            backgroundColor: '#eef3f7',
+            onLabelShow: function(e, el, code){
+                el.html(el.html()+' (GDP - '+gdpData[code]+')');
+            }
+        });
+    });
+
+</script>
+
 </body>
 </html>
