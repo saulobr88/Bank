@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Illuminate\Support\MessageBag;
 
 class ClienteController extends Controller
 {
@@ -44,8 +45,9 @@ class ClienteController extends Controller
         } elseif (auth()->guard('web')->attempt(['cpf'=>$identificacao, 'password'=>$password])){
             return redirect('/cliente');
         } else {
+            $errors = new MessageBag(['password' => ['Email and/or password invalid.']]);
             return back()
-                ->withErrors(['erros'=>'Login inválido'])
+                ->withErrors($errors)
                 ->withInput();
         }
     }

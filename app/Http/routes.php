@@ -12,17 +12,13 @@
 */
 
 Route::get('/', function () {
-    if ( Auth::guest() ){
-        return redirect('/cliente/login');
-    } else {
-        if ( auth()->guard('funcionarios')->user() ){
-            return redirect('/funcionario');
-        }
-        if ( auth()->guard('web')->user() ){
-            return redirect('/cliente');
-        }
+    if ( auth()->guard('funcionarios')->user() ){
+        return redirect('/funcionario');
     }
-    return view('welcome');
+    if ( auth()->guard('web')->user() ){
+        return redirect('/cliente');
+    }
+    return redirect('/cliente/login');
 });
 
 // Rotas dos Funcionarios
@@ -48,3 +44,6 @@ Route::group(['middleware'=>'auth:web'], function(){
 
 Route::get('/cliente/login','ClienteController@login');
 Route::post('/cliente/login','ClienteController@postLogin');
+
+// Empresas
+Route::get('/empresa','EmpresaController@index');

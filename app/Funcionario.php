@@ -24,4 +24,15 @@ class Funcionario extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public function clientes()
+    {
+        return User::all();
+    }
+
+    public function agencias()
+    {
+        return Agencia::all();
+    }
 }

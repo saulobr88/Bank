@@ -46,6 +46,14 @@ class DatabaseSeeder extends Seeder
             ['name'=>'Gabrielle Cunha Lima','email'=>'gabriellecunhalima@bcc.ufrpe.br','password'=>$senha,
                 'cpf'=>'70683800779','cep'=>'1058','numero'=>'71',
                 'tipo'=>'3', 'salario'=>'5000.00', 'created_at'=> $now,'updated_at' => $now],
+
+            ['name'=>'Convidado','email'=>'convidado@bcc.ufrpe.br','password'=>$senha,
+                'cpf'=>'12345678910','cep'=>'1050','numero'=>'70',
+                'tipo'=>'3', 'salario'=>'5000.00', 'created_at'=> $now,'updated_at' => $now],
+
+            ['name'=>'Marcelo Luiz Monteiro Marinho','email'=>'marcelo.marinho@ufrpe.br','password'=>$senha,
+                'cpf'=>'12345678911','cep'=>'1051','numero'=>'71',
+                'tipo'=>'3', 'salario'=>'5000.00', 'created_at'=> $now,'updated_at' => $now],
         ];
         DB::table('funcionarios')->insert($funcionarios);
 
@@ -67,6 +75,12 @@ class DatabaseSeeder extends Seeder
 
             ['name'=>'Laia Dina Lemhamdi Sasheva','email'=>'hhlaiadina7@yopmail.com','password'=>$senha,
                 'cpf'=>'55549440296','cep'=>'1187','numero'=>'897', 'created_at'=> $now,'updated_at' => $now],
+
+            ['name'=>'Convidado','email'=>'convidado@bcc.ufrpe.br','password'=>$senha,
+                'cpf'=>'12345678910','cep'=>'1050','numero'=>'70', 'created_at'=> $now,'updated_at' => $now],
+
+            ['name'=>'Marcelo Luiz Monteiro Marinho','email'=>'marcelo.marinho@ufrpe.br','password'=>$senha,
+                'cpf'=>'12345678911','cep'=>'1051','numero'=>'71', 'created_at'=> $now,'updated_at' => $now],
         ];
         DB::table('users')->insert($users);
 
@@ -83,6 +97,8 @@ class DatabaseSeeder extends Seeder
             ['numero'=>'1702','agencia'=>'1','user'=>'2','saldo'=>'13000.00','tipo'=>'1','created_at'=> $now,'updated_at' => $now],
             ['numero'=>'1703','agencia'=>'1','user'=>'3','saldo'=>'57000.00','tipo'=>'1','created_at'=> $now,'updated_at' => $now],
             ['numero'=>'1704','agencia'=>'1','user'=>'4','saldo'=>'70000.00','tipo'=>'1','created_at'=> $now,'updated_at' => $now],
+            ['numero'=>'1705','agencia'=>'1','user'=>'5','saldo'=>'75000.00','tipo'=>'1','created_at'=> $now,'updated_at' => $now],
+            ['numero'=>'1706','agencia'=>'1','user'=>'6','saldo'=>'76000.00','tipo'=>'1','created_at'=> $now,'updated_at' => $now],
         ];
         DB::table('contas')->insert($contas);
     }

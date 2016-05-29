@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Illuminate\Support\MessageBag;
 
 
 class FuncionarioController extends Controller
@@ -45,8 +46,12 @@ class FuncionarioController extends Controller
         } elseif (auth()->guard('funcionarios')->attempt(['cpf'=>$identificacao, 'password'=>$password])){
             return redirect('/funcionario');
         } else {
+            // if Auth::attempt fails (wrong credentials) create a new message bag instance.
+            // URL: http://laravel.io/forum/05-02-2014-login-error-message?page=1
+            $errors = new MessageBag(['password' => ['Email and/or password invalid.']]);
+
             return back()
-                ->withErrors(['erros'=>'Login inválido'])
+                ->withErrors($errors)
                 ->withInput();
         }
 
