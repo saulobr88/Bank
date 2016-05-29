@@ -35,4 +35,23 @@ class Funcionario extends Authenticatable
     {
         return Agencia::all();
     }
+
+    public function contas()
+    {
+        return $this->hasMany('App\Conta');
+    }
+
+    public function agencia()
+    {
+        return $this->belongsTo('App\Agencia');
+    }
+    public function departamento()
+    {
+        return $this->belongsTo('App\Departamento');
+    }
+    public function funcionario_tipo()
+    {
+        return $this->belongsTo('App\Funcionario_tipo');
+    }
+
 }

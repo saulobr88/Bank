@@ -32,28 +32,28 @@ class DatabaseSeeder extends Seeder
         $senha = Hash::make('123456');
         $funcionarios = [
             ['name'=>'Felipe Rocha Goncalves','email'=>'feliperochagoncalves@bcc.ufrpe.br','password'=>$senha,
-             'cpf'=>'24838069456','cep'=>'1203','numero'=>'321',
-             'tipo'=>'3', 'salario'=>'5000.00', 'created_at'=> $now,'updated_at' => $now],
+                'cpf'=>'24838069456','cep'=>'1203','numero'=>'321',
+                'agencia_id'=>'1', 'funcionario_tipo_id'=>'3', 'salario'=>'5000.00', 'created_at'=> $now,'updated_at' => $now],
 
             ['name'=>'Gustavo Ferreira Santos','email'=>'gustavoferreirasantos@bcc.ufrpe.br','password'=>$senha,
                 'cpf'=>'83484091304','cep'=>'2066','numero'=>'654',
-                'tipo'=>'1', 'salario'=>'1500.00', 'created_at'=> $now,'updated_at' => $now],
+                'agencia_id'=>'1', 'funcionario_tipo'=>'1', 'salario'=>'1500.00', 'created_at'=> $now,'updated_at' => $now],
 
             ['name'=>'Marisa Barbosa Carvalho','email'=>'marisabarbosacarvalho@bcc.ufrpe.br','password'=>$senha,
                 'cpf'=>'14347664460','cep'=>'3253','numero'=>'452',
-                'tipo'=>'4', 'salario'=>'9000.00', 'created_at'=> $now,'updated_at' => $now],
+                'agencia_id'=>'1', 'funcionario_tipo'=>'4', 'salario'=>'9000.00', 'created_at'=> $now,'updated_at' => $now],
 
             ['name'=>'Gabrielle Cunha Lima','email'=>'gabriellecunhalima@bcc.ufrpe.br','password'=>$senha,
                 'cpf'=>'70683800779','cep'=>'1058','numero'=>'71',
-                'tipo'=>'3', 'salario'=>'5000.00', 'created_at'=> $now,'updated_at' => $now],
+                'agencia_id'=>'1', 'funcionario_tipo'=>'3', 'salario'=>'5000.00', 'created_at'=> $now,'updated_at' => $now],
 
             ['name'=>'Convidado','email'=>'convidado@bcc.ufrpe.br','password'=>$senha,
                 'cpf'=>'12345678910','cep'=>'1050','numero'=>'70',
-                'tipo'=>'3', 'salario'=>'5000.00', 'created_at'=> $now,'updated_at' => $now],
+                'agencia_id'=>'1', 'funcionario_tipo'=>'3', 'salario'=>'5000.00', 'created_at'=> $now,'updated_at' => $now],
 
             ['name'=>'Marcelo Luiz Monteiro Marinho','email'=>'marcelo.marinho@ufrpe.br','password'=>$senha,
                 'cpf'=>'12345678911','cep'=>'1051','numero'=>'71',
-                'tipo'=>'3', 'salario'=>'5000.00', 'created_at'=> $now,'updated_at' => $now],
+                'agencia_id'=>'1', 'funcionario_tipo'=>'3', 'salario'=>'5000.00', 'created_at'=> $now,'updated_at' => $now],
         ];
         DB::table('funcionarios')->insert($funcionarios);
 
@@ -93,12 +93,18 @@ class DatabaseSeeder extends Seeder
         DB::table('conta_tipos')->insert($conta_tipos);
 
         $contas = [
-            ['numero'=>'1701','agencia'=>'1','user'=>'1','saldo'=>'5000.00','tipo'=>'1','created_at'=> $now,'updated_at' => $now],
-            ['numero'=>'1702','agencia'=>'1','user'=>'2','saldo'=>'13000.00','tipo'=>'1','created_at'=> $now,'updated_at' => $now],
-            ['numero'=>'1703','agencia'=>'1','user'=>'3','saldo'=>'57000.00','tipo'=>'1','created_at'=> $now,'updated_at' => $now],
-            ['numero'=>'1704','agencia'=>'1','user'=>'4','saldo'=>'70000.00','tipo'=>'1','created_at'=> $now,'updated_at' => $now],
-            ['numero'=>'1705','agencia'=>'1','user'=>'5','saldo'=>'75000.00','tipo'=>'1','created_at'=> $now,'updated_at' => $now],
-            ['numero'=>'1706','agencia'=>'1','user'=>'6','saldo'=>'76000.00','tipo'=>'1','created_at'=> $now,'updated_at' => $now],
+            ['numero'=>'1701','agencia_id'=>'1','user_id'=>'1', 'funcionario_id'=>'1',
+                'saldo'=>'5000.00','conta_tipo_id'=>'1','created_at'=> $now,'updated_at' => $now],
+            ['numero'=>'1702','agencia_id'=>'1','user_id'=>'2', 'funcionario_id'=>'4',
+                'saldo'=>'13000.00','conta_tipo_id'=>'1','created_at'=> $now,'updated_at' => $now],
+            ['numero'=>'1703','agencia'=>'1','user_id'=>'3', 'funcionario_id'=>'5',
+                'saldo'=>'57000.00','conta_tipo_id'=>'1','created_at'=> $now,'updated_at' => $now],
+            ['numero'=>'1704','agencia'=>'1','user_id'=>'4', 'funcionario_id'=>'6',
+                'saldo'=>'70000.00','conta_tipo_id'=>'1','created_at'=> $now,'updated_at' => $now],
+            ['numero'=>'1705','agencia'=>'1','user_id'=>'5', 'funcionario_id'=>'3',
+                'saldo'=>'75000.00','conta_tipo_id'=>'1','created_at'=> $now,'updated_at' => $now],
+            ['numero'=>'1706','agencia'=>'1','user_id'=>'6', 'funcionario_id'=>'3',
+                'saldo'=>'76000.00','conta_tipo_id'=>'1','created_at'=> $now,'updated_at' => $now],
         ];
         DB::table('contas')->insert($contas);
     }

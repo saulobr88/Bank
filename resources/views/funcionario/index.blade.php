@@ -1,22 +1,24 @@
 <?php
- $funcionario = auth()->guard('funcionarios')->user();
- $agencias = auth()->guard('funcionarios')->user()->agencias();
- $clientes = auth()->guard('funcionarios')->user()->clientes();
+ $f = auth()->guard('funcionarios')->user();
+ $agencia = $f->agencia;
+ $contas = $f->contas;
 
 ?>
-<h1>{{$funcionario->name}} | {{$funcionario->email}} | {{ $funcionario->cpf}}</h1>
-<hr>
-<h2>Agências</h2>
-@foreach ( $agencias as $agencia)
+<h1>{{$f->name}} | {{$f->email}} | {{ $f->cpf}}</h1>
+@if( $agencia != null )
+    <hr>
+    <h2>Minha agência</h2>
     <p>
-        Agência: {{ $agencia->name }} | CEP: {{ $agencia->cep }}
+        Número: {{$agencia->id}} | Nome: {{$agencia->name}}
     </p>
-@endforeach
+@endunless
 
 <hr>
-<h2>Clientes</h2>
-@foreach ( $clientes as $cliente)
+<h2>Contas de Clientes</h2>
+@foreach ( $contas as $conta)
     <p>
-        Cliente: {{ $cliente->name }} | CPF: {{ $cliente->cpf }} | Email: {{ $cliente->email }}
+        Conta: {{ $conta->numero }} | Agência: {{ $conta->agencia->id  }}({{ $conta->agencia->name }}) | Saldo: R$ {{ $conta->saldo }}
+        <br>
+        Cliente: {{ $conta->user->name }} | CPF: {{ $conta->user->cpf }} | Email: {{ $conta->user->email }}
     </p>
 @endforeach

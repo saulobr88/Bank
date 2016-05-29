@@ -20,9 +20,9 @@ class CreateFuncionariosTable extends Migration
             $table->string('cpf')->unique();
             $table->string('cep')->nullable();
             $table->string('numero')->nullable();
-            $table->integer('agencia')->unsigned();
-            $table->integer('departamento')->unsigned()->nullable();
-            $table->integer('tipo')->unsigned()->default('3');
+            $table->integer('agencia_id')->unsigned();
+            $table->integer('departamento_id')->unsigned()->nullable();
+            $table->integer('funcionario_tipo_id')->unsigned()->default('3');
             $table->decimal('salario', 10, 2)->nullable();
             $table->rememberToken();
             $table->timestamps();
