@@ -21,6 +21,14 @@ class Authenticate
             if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
             } else {
+                if ($guard == 'funcionarios'){
+                    return redirect()->guest('/funcionario/login');
+                }
+
+                if ($guard == 'web'){
+                    return redirect()->guest('/cliente/login');
+                }
+
                 return redirect()->guest('login');
             }
         }

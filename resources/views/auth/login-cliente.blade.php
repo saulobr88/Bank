@@ -5,9 +5,9 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Login Funcionário</div>
+                <div class="panel-heading">Login Cliente</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/funcionario/login') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/cliente/login') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('identificacao') ? ' has-error' : '' }}">

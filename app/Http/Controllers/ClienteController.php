@@ -5,22 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
-
-class FuncionarioController extends Controller
+class ClienteController extends Controller
 {
     public function __construct()
     {
-        //$this->middleware('funcionarios:funcionarios')->except(['login']);
+        //$this->middleware('auth')->except(['login']);
     }
 
     public function index()
     {
-        return view('funcionario.index');
+        return view('cliente.index');
     }
 
     public function login()
     {
-        return view('auth.login-funcionario');
+        return view('auth.login-cliente');
     }
 
     public function postLogin(Request $request)
@@ -40,23 +39,21 @@ class FuncionarioController extends Controller
         $password = $request->get('password');
 
         // Entra com o email e senha OU CPF e senha
-        if ( auth()->guard('funcionarios')->attempt(['email'=>$identificacao, 'password'=>$password])) {
-            return redirect('/funcionario');
-        } elseif (auth()->guard('funcionarios')->attempt(['cpf'=>$identificacao, 'password'=>$password])){
-            return redirect('/funcionario');
+        if ( auth()->guard('web')->attempt(['email'=>$identificacao, 'password'=>$password])) {
+            return redirect('/cliente');
+        } elseif (auth()->guard('web')->attempt(['cpf'=>$identificacao, 'password'=>$password])){
+            return redirect('/cliente');
         } else {
             return back()
                 ->withErrors(['erros'=>'Login inválido'])
                 ->withInput();
         }
-
     }
 
     public function logout()
     {
-        auth()->guard('funcionarios')->logout();
-        return redirect('/funcionario/login');
+        auth()->guard('web')->logout();
+        return redirect('/cliente/login');
 
     }
-
 }

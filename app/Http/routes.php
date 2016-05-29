@@ -12,20 +12,39 @@
 */
 
 Route::get('/', function () {
+    if ( Auth::guest() ){
+        return redirect('/cliente/login');
+    } else {
+        if ( auth()->guard('funcionarios')->user() ){
+            return redirect('/funcionario');
+        }
+        if ( auth()->guard('web')->user() ){
+            return redirect('/cliente');
+        }
+    }
     return view('welcome');
 });
 
+// Rotas dos Funcionarios
 Route::group(['middleware'=>'funcionario'], function(){
 
     Route::group(['middleware'=>'auth:funcionarios'], function(){
         Route::get('/funcionario','FuncionarioController@index');
+        Route::get('/funcionario/logout','FuncionarioController@logout');
     });
 
     Route::get('/funcionario/login','FuncionarioController@login');
     Route::post('/funcionario/login','FuncionarioController@postLogin');
-    Route::get('/funcionario/logout','FuncionarioController@logout');
 });
 
-Route::auth();
+//Route::auth();
+//Route::get('/home', 'HomeController@index');
 
-Route::get('/home', 'HomeController@index');
+// Rotas dos Clientes
+Route::group(['middleware'=>'auth:web'], function(){
+    Route::get('/cliente','ClienteController@index');
+    Route::get('/cliente/logout','ClienteController@logout');
+});
+
+Route::get('/cliente/login','ClienteController@login');
+Route::post('/cliente/login','ClienteController@postLogin');
