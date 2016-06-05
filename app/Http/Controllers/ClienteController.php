@@ -85,6 +85,15 @@ class ClienteController extends Controller
         return view('funcionario.cliente.show', compact('user','guard','cliente') );
     }
 
+    public function showCliente(User $cliente)
+    {
+        $user   = auth()->guard( $this->guard )->user();
+        $guard  = $this->guard;
+        return view('cliente.show', compact('user','guard','cliente') );
+    }
+
+
+
     public function create()
     {
         $user = auth()->guard( $this->guardF )->user();

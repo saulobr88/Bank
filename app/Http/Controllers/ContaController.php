@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\MessageBag;
 use App\Conta;
+use App\Conta_historico_saldo;
 use App\User;
 use App\Funcionario;
 use App\Conta_tipo;
@@ -14,6 +16,7 @@ use App\Conta_tipo;
 class ContaController extends Controller
 {
     //
+    protected $guard = 'web';
     protected $guardF = 'funcionarios';
 
     public function listar()
@@ -87,6 +90,8 @@ class ContaController extends Controller
         $f->conta_tipo_id = $request->get('conta_tipo_id');
         $f->save();
 
+        historicoAdd($f);
+
         flash()->success('Conta '.$f->numero .' cadastrada com sucesso!');
         return redirect('/funcionario/conta/listar');
     }
@@ -155,6 +160,14 @@ class ContaController extends Controller
         $conta->delete();
         flash()->success('A conta '.$numero.' foi deletada do sistema com sucesso!');
         return redirect('/funcionario/conta/listar');
+    }
+
+    public function historicoAdd(Conta $c){
+        $h = new Conta_historico_saldo();
+        $h->conta_id = $c->id;
+        $h->saldo = $c->saldo;
+        $h->dt_time = Carbon::now();
+        $h->save();
     }
 
 }

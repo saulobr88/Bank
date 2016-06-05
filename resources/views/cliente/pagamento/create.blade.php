@@ -32,7 +32,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Código</label>
                         <div class="col-sm-8">
-                            {!! Form::text(
+                            {!! Form::number(
                             'codigo', old('codigo'),
                             ['class'=>'form-control','placeholder'=>'Nome Completo','maxlength'=>'255']
                             ) !!}
@@ -42,9 +42,13 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Vencimento</label>
                         <div class="col-sm-8">
+                            <?php
+                                $today = date('Y-m-d');
+                            ?>
                             {!! Form::date(
-                                'dt_vencimento', \Carbon\Carbon::now(),
-                                ['class'=>'form-control','placeholder'=>'Data de Vencimento','maxlength'=>'255']
+                                'dt_vencimento', $today,
+                                ['class'=>'form-control','placeholder'=>'Data de Vencimento','maxlength'=>'255',
+                                'min'=> $today]
                             ) !!}
                         </div>
                     </div>
@@ -53,8 +57,9 @@
                         <label class="col-sm-2 control-label">Pagamento</label>
                         <div class="col-sm-8">
                             {!! Form::date(
-                            'dt_pagamento', \Carbon\Carbon::now(),
-                            ['class'=>'form-control','placeholder'=>'Data de Pagamento','maxlength'=>'255']
+                            'dt_pagamento', $today,
+                            ['class'=>'form-control','placeholder'=>'Data de Pagamento','maxlength'=>'255',
+                                'min'=>$today]
                             ) !!}
                         </div>
                     </div>

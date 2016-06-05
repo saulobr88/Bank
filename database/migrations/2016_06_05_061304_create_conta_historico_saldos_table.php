@@ -17,6 +17,7 @@ class CreateContaHistoricoSaldosTable extends Migration
             $table->integer('conta_id')->unsigned();
             $table->decimal('saldo', 10, 2);
             $table->dateTime('dt_time');
+            $table->timestamps();
         });
     }
 

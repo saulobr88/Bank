@@ -3,17 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use Illuminate\Support\MessageBag;
 use Carbon\Carbon;
-use App\Pagamento;
+use App\Transferencia;
 use App\Conta;
 use App\Conta_historico_saldo;
 use App\Transacao;
 
-
-class PagamentoController extends Controller
+class TransferenciaController extends Controller
 {
     //
     protected $guard = 'web';
@@ -22,9 +20,9 @@ class PagamentoController extends Controller
     {
         $user = auth()->guard( $this->guard )->user();
         $conta = $user->contas->first()->id;
-        $pagamentos = Pagamento::where('conta_id',$conta)->get();
+        $transferencias = Transferencia::where('conta_id',$conta)->get();
         $guard = $this->guard;
-        return view('cliente.pagamento.listar', compact('user','guard','pagamentos'));
+        return view('cliente.transferencia.listar', compact('user','guard','transferencias'));
     }
 
     public function listarAgendados()
@@ -33,12 +31,12 @@ class PagamentoController extends Controller
         $user = auth()->guard( $this->guard )->user();
         $conta = $user->contas->first()->id;
         $today = date('Y-m-d');
-        $pagamentos = Pagamento::where([
+        $transferencias = Transferencia::where([
             ['conta_id',$conta],
-            ['dt_pagamento','>',$today],
-            ])->get();
+            ['dt_t','>',$today],
+        ])->get();
 
-        return view('cliente.pagamento.listar', compact('user','guard','pagamentos'));
+        return view('cliente.transferencia.listar', compact('user','guard','transferencias'));
     }
 
     public function create()
@@ -46,8 +44,7 @@ class PagamentoController extends Controller
         $user = auth()->guard( $this->guard )->user();
         $guard = $this->guard;
         $conta = $user->contas->first();
-        return view('cliente.pagamento.create', compact('user','guard','conta'));
-
+        return view('cliente.transferencia.create', compact('user','guard','conta'));
     }
 
     public function store(Request $request)
@@ -55,10 +52,13 @@ class PagamentoController extends Controller
         $user = auth()->guard( $this->guard )->user();
 
         $validator = validator($request->all(), [
-            'codigo' => 'required|min:3|max:255',
-            'dt_vencimento' => 'required',
-            'dt_pagamento' => 'required',
+            'banco' => 'required',
+            'agencia' => 'required',
+            'numero' => 'required',
+            'cnp_destino' => 'required',
+            'nome_destino' => 'required',
             'valor' => 'required',
+            'dt_t' => 'required',
         ]);
 
         if ($validator->fails() ){
@@ -67,18 +67,19 @@ class PagamentoController extends Controller
                 ->withInput();
         }
 
-
-        $f = new Pagamento();
-        $f->valor = $request->get('valor');
-        $f->dt_vencimento = $request->get('dt_vencimento');
-        $f->dt_pagamento = $request->get('dt_pagamento');
-        $f->vl_multa = $request->get('vl_multa');
-        $f->codigo = $request->get('codigo');
-        $f->descricao = $request->get('descricao');
+        $f = new Transferencia();
         $f->conta_id = $request->get('conta_id');
+        $f->banco = $request->get('banco');
+        $f->agencia = $request->get('agencia');
+        $f->numero = $request->get('numero');
+        $f->cnp_destino = $request->get('cnp_destino');
+        $f->nome_destino = $request->get('nome_destino');
+        $f->valor = $request->get('valor');
+        $f->dt_t = $request->get('dt_t');
+        $f->tipo = $request->get('tipo');
 
         $today = date('Y-m-d');
-        if ( $f->dt_pagamento == $today ){
+        if ( $f->dt_t == $today ){
             $c = Conta::find( $f->conta_id );
             if( $c->saldo < $f->valor ){
                 $errors = new MessageBag(['msg' => ['Conta sem saldo suficiente.']]);
@@ -89,13 +90,13 @@ class PagamentoController extends Controller
                 $novoSaldo = $c->saldo;
                 $c->saldo = $novoSaldo - $f->valor;
                 $c->save();
-                $f->status = "PAGO";
+                $f->status = "FEITO";
 
                 $this->historicoAdd($c);
 
                 $t = new Transacao();
                 $t->conta_id = $f->conta_id;
-                $t->transacao_tipos_id = 2; // Retirada
+                $t->transacao_tipos_id = 3; //Transfêrencia.
                 $t->valor = $f->valor;
                 $t->dt_solicitacao = $today;
                 $t->dt_realizacao = $today;
@@ -109,8 +110,8 @@ class PagamentoController extends Controller
         }
 
         $f->save();
-        flash()->success('Pagamento '.$f->codigo .'('. $f->dt_pagamento .') cadastrado com sucesso!');
-        return redirect('/cliente/pagamento/listar');
+        flash()->success('Transferência '.$f->valor .'('. $f->dt_t .') cadastrado com sucesso!');
+        return redirect('/cliente/transferencia/listar');
 
     }
 
@@ -121,5 +122,4 @@ class PagamentoController extends Controller
         $h->dt_time = Carbon::now();
         $h->save();
     }
-
 }

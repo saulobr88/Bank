@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Transferencia extends Model
 {
     //
-    public function transferencia_conta()
+    public function conta()
     {
-        return $this->belongsTo('App\Transferencia_conta');
+        return $this->belongsTo('App\Conta');
     }
 }

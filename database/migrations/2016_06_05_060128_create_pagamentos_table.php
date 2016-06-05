@@ -21,6 +21,7 @@ class CreatePagamentosTable extends Migration
             $table->string('codigo')->nullable();
             $table->string('descricao')->nullable();
             $table->integer('conta_id')->unsigned();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

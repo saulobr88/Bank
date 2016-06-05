@@ -69,19 +69,36 @@ Route::group(['middleware'=>'funcionario'], function(){
     });
 });
 
+
+Route::get('/cliente/login','ClienteController@login');
+Route::post('/cliente/login','ClienteController@postLogin');
+
 // Rotas dos Clientes
 Route::group(['middleware'=>'auth:web'], function(){
     Route::get('/cliente','ClienteController@index');
     Route::get('/cliente/logout','ClienteController@logout');
 
+    // Clientes - Extratos
+    Route::get('/cliente/extrato/listar','ExtratoController@extrato');
+
+    // Clientes - Transferências
+    Route::get('/cliente/transferencia/listar','TransferenciaController@listar');
+    Route::get('/cliente/transferencia/listarAgendados','TransferenciaController@listarAgendados');
+    Route::get('/cliente/transferencia/cadastrar','TransferenciaController@create');
+    Route::post('/cliente/transferencia/store','TransferenciaController@store');
+
     // Clientes - Pagamentos
     Route::get('/cliente/pagamento/listar','PagamentoController@listar');
+    Route::get('/cliente/pagamento/listarAgendados','PagamentoController@listarAgendados');
     Route::get('/cliente/pagamento/cadastrar','PagamentoController@create');
     Route::post('/cliente/pagamento/store','PagamentoController@store');
-});
 
-Route::get('/cliente/login','ClienteController@login');
-Route::post('/cliente/login','ClienteController@postLogin');
+    // Clientes - Tarifas
+    Route::get('/cliente/tarifa/listar','TarifaController@listar');
+
+    // Clientes - Perfil
+    Route::get('/cliente/{cliente}','ClienteController@showCliente');
+});
 
 // Empresas
 Route::get('/empresa','EmpresaController@index');

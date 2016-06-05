@@ -15,9 +15,7 @@
                     <span class="menu-arrow arrow_carrot-right"></span>
                 </a>
                 <ul class="sub">
-                    <li><a class="" href="#">Extrato Semanal</a></li>
-                    <li><a class="" href="#">Extrato Mensal</a></li>
-                    <li><a class="" href="#">Extrato por período</a></li>
+                    <li><a class="" href="{{ url('/cliente/extrato/listar') }}">Extrato</a></li>
                 </ul>
             </li>
             <li class="sub-menu">
@@ -27,9 +25,9 @@
                     <span class="menu-arrow arrow_carrot-right"></span>
                 </a>
                 <ul class="sub">
-                    <li><a class="" href="#">Efetuar</a></li>
-                    <li><a class="" href="#">Consultar</a></li>
-                    <li><a class="" href="#">Agendar</a></li>
+                    <li><a class="" href="{{ url('/cliente/transferencia/cadastrar') }}">Efetuar</a></li>
+                    <li><a class="" href="{{ url('/cliente/transferencia/listar') }}">Listar</a></li>
+                    <li><a class="" href="{{ url('/cliente/transferencia/listarAgendados') }}">Agendadas</a></li>
                 </ul>
             </li>
             <li class="sub-menu">
@@ -41,7 +39,7 @@
                 <ul class="sub">
                     <li><a class="" href="{{ url('/cliente/pagamento/cadastrar') }}">Efetuar</a></li>
                     <li><a class="" href="{{ url('/cliente/pagamento/listar') }}">Listar</a></li>
-                    <li><a class="" href="#">Agendar</a></li>
+                    <li><a class="" href="{{ url('/cliente/pagamento/listarAgendados') }}">Agendados</a></li>
                 </ul>
             </li>
             <li class="sub-menu">
@@ -97,7 +95,7 @@
                 </a>
             </li>
             <li>
-                <a class="" href="#">
+                <a class="" href="{{ url('/cliente/tarifa/listar') }}">
                     <i class="icon_genius"></i>
                     <span>Taxas</span>
                 </a>

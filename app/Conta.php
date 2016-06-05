@@ -42,9 +42,9 @@ class Conta extends Model
         return $this->hasMany('App\IR');
     }
 
-    public function transaferencia_conta()
+    public function transaferencias()
     {
-        return $this->hasMany('App\Transferencia_conta');
+        return $this->hasMany('App\Transferencia');
     }
 
     public function pagamentos()

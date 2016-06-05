@@ -27,6 +27,27 @@
                 <div class="title">Saldo Atual (Conta {{ $conta->conta_tipo->name }})</div>
             </div><!--/.info-box-->
         </div><!--/.col-->
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <header class="panel-heading">
+                Histórico de saldos
+            </header>
+            <table class="table table-striped table-advance table-hover">
+                <tbody>
+                <tr>
+                    <th><i class="icon_document_alt"></i> Data</th>
+                    <th><i class="icon_house_alt"></i> Saldo</th>
+                    <th><i class="icon_document"></i> Conta </th>
+                </tr>
+                @foreach($conta->conta_historico_saldo as $h)
+                    <tr>
+                        <td>{{ $h->dt_time }}</td>
+                        <td>{{ $h->saldo }}</td>
+                        <td>{{ $conta->numero }}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
         @endforeach
     @else
         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">

@@ -14,10 +14,16 @@ class CreateTransferenciasTable extends Migration
     {
         Schema::create('transferencias', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('transferencia_contas_id')->unsigned();
+            $table->integer('conta_id')->unsigned();
+            $table->string('banco')->default('1');
+            $table->string('agencia')->default('1');
+            $table->string('numero')->default('1');
+            $table->string('cnp_destino');
+            $table->string('nome_destino');
             $table->decimal('valor', 10, 2);
-            $table->dateTime('dt_time');
+            $table->date('dt_t');
             $table->string('tipo')->default('TED');
+            $table->string('status');
             $table->timestamps();
         });
     }
