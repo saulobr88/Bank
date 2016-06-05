@@ -50,7 +50,16 @@
         </div>
 
         <!--logo start-->
-        <a href="#" class="logo">BCC <span class="lite">Bank</span></a>
+        <?php
+        $logoutUrl = "#";
+        if ( $guard == 'funcionarios'){
+            $logoutUrl = "/funcionario/";
+        }
+        if ( $guard == 'web'){
+            $logoutUrl = "/cliente/";
+        }
+        ?>
+        <a href="{{ url($logoutUrl) }}" class="logo">BCC <span class="lite">Bank</span></a>
         <!--logo end-->
 
         @include('layouts.topnav')

@@ -55,6 +55,17 @@ Route::group(['middleware'=>'funcionario'], function(){
         Route::get('/funcionario/cliente/{cliente}/destroy','ClienteController@destroy');
         Route::get('/funcionario/cliente/{cliente}','ClienteController@show');
 
+        // Funcionarios - Contas CRUD
+        Route::get('/funcionario/conta/listar','ContaController@listar');
+        Route::get('/funcionario/conta/cadastrar','ContaController@create');
+        Route::post('/funcionario/conta/store','ContaController@store');
+        Route::get('/funcionario/conta/{conta}/edit','ContaController@edit');
+        Route::post('/funcionario/conta/{conta}/update',[
+            'as' => 'funcionario.conta.update', 'uses' => 'ContaController@update'
+        ]);
+        Route::get('/funcionario/conta/{conta}/destroy','ContaController@destroy');
+        Route::get('/funcionario/conta/{conta}','ContaController@show');
+
     });
 });
 

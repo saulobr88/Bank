@@ -76,7 +76,8 @@ class FuncionarioController extends Controller
         $funcionarios = Funcionario::where('agencia_id', $user->agencia_id)->orderBy('name')->get();
         //dd($funcionarios);
         $guard = $this->guard;
-        return view('funcionario.listar', compact('user','guard','funcionarios'));
+        $contador = count($funcionarios);
+        return view('funcionario.listar', compact('user','guard','funcionarios','contador'));
 
     }
 

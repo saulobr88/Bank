@@ -72,7 +72,8 @@ class ClienteController extends Controller
         $user = auth()->guard( $this->guardF )->user();
         $clientes = User::orderBy('name')->get();
         $guard = $this->guardF;
-        return view('funcionario.cliente.listar', compact('user','guard','clientes'));
+        $contador = count($clientes);
+        return view('funcionario.cliente.listar', compact('user','guard','clientes','contador'));
 
     }
 

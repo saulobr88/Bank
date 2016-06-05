@@ -4,7 +4,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
             <li class="active">
-                <a class="" href="#">
+                <a class="" href="{{ url('/funcionario/')  }}">
                     <i class="icon_house_alt"></i>
                     <span>Página Inicial</span>
                 </a>
@@ -59,8 +59,8 @@
                     <span class="menu-arrow arrow_carrot-right"></span>
                 </a>
                 <ul class="sub">
-                    <li><a class="" href="#">Cadastrar</a></li>
-                    <li><a class="" href="#">Listar</a></li>
+                    <li><a class="" href="{{ url('/funcionario/conta/cadastrar') }}">Cadastrar</a></li>
+                    <li><a class="" href="{{ url('/funcionario/conta/listar') }}">Listar</a></li>
                 </ul>
             </li>
             <li class="sub-menu">
