@@ -12,7 +12,16 @@
             <ul class="dropdown-menu extended logout">
                 <div class="log-arrow-up"></div>
                 <li class="eborder-top">
-                    <a href="#"><i class="icon_profile"></i> Perfil</a>
+                    <?php
+                    $profile = "#";
+                    if ( $guard == 'funcionarios'){
+                        $profile = "/funcionario/".$user->id;
+                    }
+                    if ( $guard == 'web'){
+                        $profile = "/cliente/".$user->id;
+                    }
+                    ?>
+                    <a href="{{ url($profile) }}"><i class="icon_profile"></i> Perfil</a>
                 </li>
                 <li>
                     <?php

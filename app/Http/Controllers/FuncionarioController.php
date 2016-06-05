@@ -83,7 +83,11 @@ class FuncionarioController extends Controller
 
     public function show(Funcionario $funcionario)
     {
-        dd($funcionario->toArray());
+        //dd($funcionario->toArray());
+        $user   = auth()->guard( $this->guard )->user();
+        $guard  = $this->guard;
+        return view('funcionario.show', compact('user','guard','funcionario') );
+
     }
 
     public function create()

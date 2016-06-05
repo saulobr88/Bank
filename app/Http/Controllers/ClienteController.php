@@ -79,7 +79,10 @@ class ClienteController extends Controller
 
     public function show(User $cliente)
     {
-        dd($cliente->toArray());
+        //dd($cliente->toArray());
+        $user   = auth()->guard( $this->guardF )->user();
+        $guard  = $this->guardF;
+        return view('funcionario.cliente.show', compact('user','guard','cliente') );
     }
 
     public function create()

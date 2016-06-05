@@ -3,7 +3,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
             <li class="active">
-                <a class="" href="#">
+                <a class="" href="{{ url('/cliente') }}">
                     <i class="icon_house_alt"></i>
                     <span>Página Inicial</span>
                 </a>

@@ -51,15 +51,15 @@
 
         <!--logo start-->
         <?php
-        $logoutUrl = "#";
+        $logoUrl = "#";
         if ( $guard == 'funcionarios'){
-            $logoutUrl = "/funcionario/";
+            $logoUrl = "/funcionario/";
         }
         if ( $guard == 'web'){
-            $logoutUrl = "/cliente/";
+            $logoUrl = "/cliente/";
         }
         ?>
-        <a href="{{ url($logoutUrl) }}" class="logo">BCC <span class="lite">Bank</span></a>
+        <a href="{{ url($logoUrl) }}" class="logo">BCC <span class="lite">Bank</span></a>
         <!--logo end-->
 
         @include('layouts.topnav')
