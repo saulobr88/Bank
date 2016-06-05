@@ -28,4 +28,20 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Conta');
     }
+
+    public function cartaos()
+    {
+        return $this->hasMany('App\Cartao');
+    }
+
+    public function emprestimos()
+    {
+        return $this->hasMany('App\Emprestimos');
+    }
+
+    public function irs()
+    {
+        return $this->hasMany('App\IR');
+    }
+
 }

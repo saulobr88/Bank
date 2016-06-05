@@ -20,6 +20,7 @@ class CreateEmprestimosTable extends Migration
             $table->integer('n_parcelas')->default(12);
             $table->decimal('vl_multa', 10, 2)->default(100.00);
             $table->integer('user_id')->unsigned();
+            $table->integer('conta_id')->unsigned();
             $table->date('dt_solicitacao')->nullable();
             $table->integer('funcionario_id')->unsigned();
             $table->timestamps();

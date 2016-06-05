@@ -26,4 +26,35 @@ class Conta extends Model
     {
         return $this->belongsTo('App\Funcionario');
     }
+
+    public function conta_historico_saldo()
+    {
+        return $this->hasMany('App\Conta_historico_saldo');
+    }
+
+    public function emprestimos()
+    {
+        return $this->hasMany('App\Emprestimos');
+    }
+
+    public function irs()
+    {
+        return $this->hasMany('App\IR');
+    }
+
+    public function transaferencia_conta()
+    {
+        return $this->hasMany('App\Transferencia_conta');
+    }
+
+    public function pagamentos()
+    {
+        return $this->hasMany('App\Pagamentos');
+    }
+
+    public function transacoes()
+    {
+        return $this->hasMany('App\Transacao');
+    }
+
 }

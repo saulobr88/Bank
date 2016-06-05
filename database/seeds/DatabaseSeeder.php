@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ContasTableSeeder::class);
         $this->call(TarifasTableSeeder::class);
         $this->call(CartaosTableSeeder::class);
+        $this->call(Transacao_tiposTableSeeder::class);
 
 
     }
