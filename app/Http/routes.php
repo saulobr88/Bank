@@ -73,6 +73,11 @@ Route::group(['middleware'=>'funcionario'], function(){
 Route::group(['middleware'=>'auth:web'], function(){
     Route::get('/cliente','ClienteController@index');
     Route::get('/cliente/logout','ClienteController@logout');
+
+    // Clientes - Pagamentos
+    Route::get('/cliente/pagamento/listar','PagamentoController@listar');
+    Route::get('/cliente/pagamento/cadastrar','PagamentoController@create');
+    Route::post('/cliente/pagamento/store','PagamentoController@store');
 });
 
 Route::get('/cliente/login','ClienteController@login');

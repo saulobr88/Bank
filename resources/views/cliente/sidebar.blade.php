@@ -39,8 +39,8 @@
                     <span class="menu-arrow arrow_carrot-right"></span>
                 </a>
                 <ul class="sub">
-                    <li><a class="" href="#">Efetuar</a></li>
-                    <li><a class="" href="#">Consultar</a></li>
+                    <li><a class="" href="{{ url('/cliente/pagamento/cadastrar') }}">Efetuar</a></li>
+                    <li><a class="" href="{{ url('/cliente/pagamento/listar') }}">Listar</a></li>
                     <li><a class="" href="#">Agendar</a></li>
                 </ul>
             </li>
