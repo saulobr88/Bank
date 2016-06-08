@@ -80,6 +80,8 @@ Route::group(['middleware'=>'auth:web'], function(){
 
     // Clientes - Extratos
     Route::get('/cliente/extrato/listar','ExtratoController@extrato');
+    Route::get('/cliente/extrato/consultar','ExtratoController@extrato');
+    Route::post('/cliente/extrato/consultar','ExtratoController@extrato2');
 
     // Clientes - Transferências
     Route::get('/cliente/transferencia/listar','TransferenciaController@listar');

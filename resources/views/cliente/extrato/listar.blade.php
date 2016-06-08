@@ -29,6 +29,29 @@
                     </p>
                 </div>
 
+                <div class="col-lg-12">
+                    <p>
+                        {!! Form::open(['url'=>'/cliente/extrato/consultar', 'class'=>'form-inline'])!!}
+                        <div class="form-group">
+                        {!! Form::date(
+                            'dt_ini', $dt_ini,
+                            ['class'=>'form-control','placeholder'=>'Data inicial','maxlength'=>'255',
+                            'min'=> $dt_min, 'max'=> $dt_max])
+                        !!}
+                        </div>
+                        <div class="form-group">
+                        {!! Form::date(
+                            'dt_final', $dt_final,
+                            ['class'=>'form-control','placeholder'=>'Data Final','maxlength'=>'255',
+                            'min'=>$dt_min, 'max'=> $dt_max]
+                        ) !!}
+                        </div>
+
+                        <button class="btn btn-primary" type="submit">Consultar</button>
+                        {!! Form::close() !!}
+                    </p>
+                </div>
+
                 @include('flash::message')
 
                 @if( $transacaos != null )
@@ -46,12 +69,13 @@
                             <td>{{ $t->dt_realizacao }}</td>
                             <td>{{ $t->id }}</td>
                             <td>{{ $t->valor }}</td>
-                            @if ( $t->transacao_tipos->debito == 1)
-                            <td> DÉBITO </td>
+                            @if( $t->transacao_tipos->debito ==1 )
+                            <td>DÉBITO</td>
                             @else
-                            <td> CRÉDITO </td>
+                            <td>CRÉDITO</td>
                             @endif
                             <td>{{ $t->transacao_tipos->nome }}</td>
+
                         </tr>
                     @endforeach
                     </tbody>
