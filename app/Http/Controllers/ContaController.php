@@ -90,7 +90,7 @@ class ContaController extends Controller
         $f->conta_tipo_id = $request->get('conta_tipo_id');
         $f->save();
 
-        historicoAdd($f);
+        $this->historicoAdd($f);
 
         flash()->success('Conta '.$f->numero .' cadastrada com sucesso!');
         return redirect('/funcionario/conta/listar');
@@ -162,7 +162,7 @@ class ContaController extends Controller
         return redirect('/funcionario/conta/listar');
     }
 
-    public function historicoAdd(Conta $c){
+    private function historicoAdd(Conta $c){
         $h = new Conta_historico_saldo();
         $h->conta_id = $c->id;
         $h->saldo = $c->saldo;
