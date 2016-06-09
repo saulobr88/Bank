@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cheque;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -58,7 +59,7 @@ class PagamentoController extends Controller
             'codigo' => 'required|min:3|max:255',
             'dt_vencimento' => 'required',
             'dt_pagamento' => 'required',
-            'valor' => 'required',
+            'valor' => 'required|numeric',
         ]);
 
         if ($validator->fails() ){

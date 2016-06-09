@@ -34,7 +34,7 @@
                         <div class="col-sm-8">
                             {!! Form::number(
                             'codigo', old('codigo'),
-                            ['class'=>'form-control','placeholder'=>'Nome Completo','maxlength'=>'255']
+                            ['class'=>'form-control','placeholder'=>'Número do boleto','maxlength'=>'255']
                             ) !!}
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Multa</label>
                         <div class="col-sm-8">
-                            {!! Form::number(
+                            {!! Form::text(
                             'vl_multa', old('vl_multa'),
                             ['class'=>'form-control','placeholder'=>'Valor da Multa','maxlength'=>'255']
                             ) !!}
@@ -77,7 +77,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Valor</label>
                         <div class="col-sm-8">
-                            {!! Form::number(
+                            {!! Form::text(
                             'valor', old('valor'),
                             ['class'=>'form-control','placeholder'=>'Valor da Multa','maxlength'=>'255']
                             ) !!}

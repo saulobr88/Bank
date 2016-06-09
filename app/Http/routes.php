@@ -96,6 +96,10 @@ Route::group(['middleware'=>'auth:web'], function(){
     Route::post('/cliente/pagamento/store','PagamentoController@store');
 
     // Clientes - Tarifas
+    Route::get('/cliente/cheque/listar','ChequeController@listar');
+    Route::get('/cliente/cheque/{cheque}','ChequeController@show');
+
+    // Clientes - Tarifas
     Route::get('/cliente/tarifa/listar','TarifaController@listar');
 
     // Clientes - Perfil

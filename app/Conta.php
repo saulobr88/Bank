@@ -57,4 +57,9 @@ class Conta extends Model
         return $this->hasMany('App\Transacao');
     }
 
+    public function cheques()
+    {
+        return $this->hasMany('App\Cheque');
+    }
+
 }
