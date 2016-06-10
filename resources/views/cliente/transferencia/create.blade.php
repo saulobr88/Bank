@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Beneficiário</label>
+                        <label class="col-sm-2 control-label">Beneficiado</label>
                         <div class="col-sm-8">
                             {!! Form::text(
                             'nome_destino', old('nome_destino'),
@@ -79,7 +79,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Valor</label>
                         <div class="col-sm-8">
-                            {!! Form::number(
+                            {!! Form::text(
                             'valor', old('valor'),
                             ['class'=>'form-control','placeholder'=>'Valor','maxlength'=>'255']
                             ) !!}

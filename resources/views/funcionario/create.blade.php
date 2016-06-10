@@ -57,7 +57,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">CPF</label>
                         <div class="col-sm-8">
-                            {!! Form::text(
+                            {!! Form::number(
                             'cpf', old('cpf'),
                             ['class'=>'form-control','placeholder'=>'CPF Somente números','maxlength'=>'255']
                             ) !!}
@@ -107,7 +107,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Salário</label>
                         <div class="col-sm-8">
-                            {!! Form::number(
+                            {!! Form::text(
                             'salario', old('salario'),
                             ['class'=>'form-control','placeholder'=>'O Salário, uso Ponto para separar as casas decimais','maxlength'=>'255']
                             ) !!}
