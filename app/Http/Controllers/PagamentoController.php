@@ -12,6 +12,7 @@ use App\Pagamento;
 use App\Conta;
 use App\Conta_historico_saldo;
 use App\Transacao;
+use App\Notificacao;
 
 
 class PagamentoController extends Controller
@@ -101,6 +102,16 @@ class PagamentoController extends Controller
                 $t->dt_solicitacao = $today;
                 $t->dt_realizacao = $today;
                 $t->save();
+
+                if ( $c->notificar == 1){
+                    $msg = "Pagamento realizado pela conta ".$c->numero
+                            .". No valor de R$ ".$f->valor
+                            .". Saldo Atual: R$ ".$c->saldo;
+                    $n = new Notificacao;
+                    $n->conta_id = $c->id;
+                    $n->msg = $msg;
+                    $n->save();
+                }
 
             }
         } else {

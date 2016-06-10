@@ -62,4 +62,9 @@ class Conta extends Model
         return $this->hasMany('App\Cheque');
     }
 
+    public function notificacoes()
+    {
+        return $this->hasMany('App\Notificacao');
+    }
+
 }

@@ -100,6 +100,9 @@ Route::group(['middleware'=>'auth:web'], function(){
     Route::get('/cliente/cheque/{cheque}','ChequeController@show');
 
     // Clientes - Tarifas
+    Route::get('/cliente/notificacao/listar','NotificacaoController@listar');
+
+    // Clientes - Tarifas
     Route::get('/cliente/tarifa/listar','TarifaController@listar');
 
     // Clientes - Perfil

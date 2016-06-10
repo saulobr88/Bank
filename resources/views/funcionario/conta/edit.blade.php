@@ -37,7 +37,7 @@
                         <div class="col-sm-8">
                             {!! Form::text(
                             'agencia_id', null,
-                            ['class'=>'form-control','placeholder'=>'Número único da Conta','maxlength'=>'255', 'disabled'=>'true']
+                            ['class'=>'form-control','placeholder'=>'Número único da Agência','maxlength'=>'255', 'disabled'=>'true']
                             ) !!}
                         </div>
                     </div>
@@ -76,10 +76,38 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Saldo</label>
                         <div class="col-sm-8">
-                            {!! Form::number(
+                            {!! Form::text(
                             'saldo', old('saldo'),
-                            ['class'=>'form-control','placeholder'=>'Saldo inicial da conta','maxlength'=>'255', 'disabled'=>'true']
+                            ['class'=>'form-control','placeholder'=>'Saldo da conta','maxlength'=>'255', 'disabled'=>'true']
                             ) !!}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Notificações</label>
+                        <div class="col-sm-8">
+                            <div class="radio">
+                                <?php
+                                    if ($conta->notificar == 1){
+                                        $simB = "true";
+                                        $naoB = "false";
+                                    } else {
+                                        $simB = "false";
+                                        $naoB = "true";
+                                    }
+                                ?>
+                                <label>
+                                    {!! Form::radio('notificar', '1', $simB) !!}
+                                    Sim
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    {!! Form::radio('notificar', '0', $naoB)!!}
+                                    Não
+                                </label>
+                            </div>
+
                         </div>
                     </div>
 

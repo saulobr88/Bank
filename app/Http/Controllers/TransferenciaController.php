@@ -10,6 +10,7 @@ use App\Transferencia;
 use App\Conta;
 use App\Conta_historico_saldo;
 use App\Transacao;
+use App\Notificacao;
 
 class TransferenciaController extends Controller
 {
@@ -101,6 +102,16 @@ class TransferenciaController extends Controller
                 $t->dt_solicitacao = $today;
                 $t->dt_realizacao = $today;
                 $t->save();
+
+                if ( $c->notificar == 1){
+                    $msg = "Transferência realizada pela conta ".$c->numero
+                        .". No valor de R$ ".$f->valor
+                        .". Saldo Atual: R$ ".$c->saldo;
+                    $n = new Notificacao;
+                    $n->conta_id = $c->id;
+                    $n->msg = $msg;
+                    $n->save();
+                }
 
             }
         } else {

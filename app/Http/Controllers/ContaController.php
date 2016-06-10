@@ -65,6 +65,7 @@ class ContaController extends Controller
             'conta_tipo_id' => 'required',
             'user_id' => 'required',
             'funcionario_id' => 'required',
+            'notificar' => 'required',
         ]);
 
         if ($validator->fails() ){
@@ -88,6 +89,7 @@ class ContaController extends Controller
         $f->funcionario_id = $request->get('funcionario_id');
         $f->saldo = $request->get('saldo');
         $f->conta_tipo_id = $request->get('conta_tipo_id');
+        $f->notificar = $request->get('notificar');
         $f->save();
 
         $this->historicoAdd($f);

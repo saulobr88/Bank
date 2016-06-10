@@ -20,6 +20,7 @@ class CreateContasTable extends Migration
             $table->integer('funcionario_id')->unsigned()->nullable();
             $table->decimal('saldo', 10, 2);
             $table->integer('conta_tipo_id')->unsigned()->default('1');
+            $table->integer('notificar')->unsigned()->default('0');
             $table->timestamps();
         });
     }
