@@ -169,7 +169,7 @@ class FuncionarioController extends Controller
         $agencias = \App\Agencia::lists('name', 'id');
         $departamentos = \App\Departamento::lists('name', 'id');
         $cargos = \App\Funcionario_tipo::lists('name', 'id');
-        if ( $user->funcionario_tipo_id > 4 ){
+        if ( $user->funcionario_tipo_id >= 4 ){
             return view('funcionario.edit', compact('user','guard','agencias','departamentos','cargos','funcionario'));
         } else {
             return back();
